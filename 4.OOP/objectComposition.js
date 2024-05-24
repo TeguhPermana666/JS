@@ -32,21 +32,33 @@ function canDeployApp(developer){
     }
 }
 
-function createFrontEndDeveloper(name){
+function CreateFrontEndDeveloper(name){
     const developer = new Developer(name);
     return Object.assign(developer, canBuildUI(developer));
 }
 
-function createBackEndDeveloper(name){
+function CreateBackEndDeveloper(name){
     const developer = new Developer(name);
     return Object.assign(developer, canBuildAPI(developer))
 }
-function createFullStackDeveloper(name){
+function CreateFullStackDeveloper(name){
     const developer = new Developer(name);
     return Object.assign(developer, canBuildAPI(developer), canBuildUI(developer), canDeployApp(developer));    
 }
 
-const createFrontEndDeveloper = createFrontEndDeveloper("Dimas");
+const createFrontEndDeveloper = CreateFrontEndDeveloper("Dimas");
 createFrontEndDeveloper.commitChanges();
-frontEndDeveloper.buildUI();
-frontEndDeveloper.
+createFrontEndDeveloper.buildUI();
+console.log(`is ${createFrontEndDeveloper.name} a developer? ${createFrontEndDeveloper instanceof Developer}`);
+
+const createBackEndDeveloper = CreateBackEndDeveloper("Dimas");
+createBackEndDeveloper.commitChanges();
+createBackEndDeveloper.buildAPI();
+console.log(`is ${createBackEndDeveloper.name} a developer? ${createBackEndDeveloper instanceof Developer}`);
+
+const createFullStackDeveloper = CreateFullStackDeveloper("Dimas");
+createFullStackDeveloper.commitChanges();
+createFullStackDeveloper.buildAPI();
+createFullStackDeveloper.buildUI();
+createFullStackDeveloper.deployApp();
+console.log(`is ${createFullStackDeveloper.name} a developer? ${createFullStackDeveloper instanceof Developer}`);
