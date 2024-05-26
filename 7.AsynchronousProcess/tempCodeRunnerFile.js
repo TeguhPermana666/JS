@@ -1,18 +1,5 @@
+Timeout(()=>resolve(1),1000));
+// const promise2 = new Promise((resolve)=>setTimeout(()=>resolve(2),2000));
+// const promise3 = new Promise((resolve)=>setTimeout(()=>resolve(3),3000));
 
-// 3. Promise
-
-import {getUser, getWeather} from './utils_promise.js';
-
-function getuserWeathers(userId){
-    let user;
-    return getUser(userId)
-        .then((_user) => {
-            user = _user;
-            return getWeather(user.location)
-        })
-        .then((weather)=>({...user, ...weather}))
-}
-
-getuserWeathers(1)
-    .then(console.log)
-    .catch(console.log);
+// Promise.all([promise1,promise2,promise3]).then((values)=>console.log(values))
